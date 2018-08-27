@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 27, 2018 at 08:17 AM
+-- Generation Time: Aug 27, 2018 at 10:00 AM
 -- Server version: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -38,27 +38,7 @@ CREATE TABLE IF NOT EXISTS `clanovi` (
   `korisnicko_ime` varchar(30) NOT NULL,
   `sifra` varchar(50) NOT NULL,
   PRIMARY KEY (`id_clana`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `clanovi`
---
-
-INSERT INTO `clanovi` (`id_clana`, `ime`, `prezime`, `korisnicko_ime`, `sifra`) VALUES
-(1, 'Marko', 'Djurovic', 'janko', '2222'),
-(2, 'marko', 'petrovic', 'ma', '234'),
-(3, 'marko', 'markovic', 'mare', '1234'),
-(4, 'marko', 'markovic', 'mareeeee', '1234'),
-(12, 'Nikola', 'Nikolic', 'Dzoni44', '1111'),
-(10, 'marko', 'djordjevic', 'janko3', '1234'),
-(23, 'ivan', 'ivanovic', 'ivke', '1111'),
-(22, 'ivan', 'ivanovic', 'ivke', '1111'),
-(17, 'dd', 'dd', 'ddd', 'ddd'),
-(25, 'nikola', 'ivanovic', 'ivke', '1111'),
-(24, 'ivan', 'ivanovic', 'ivke', '1111'),
-(21, 'miodrag', 'djordjevic', 'mile', '1111'),
-(27, 'Petar', 'Petrovic', 'pera', '1234'),
-(28, 'Dejan', 'Dejanovic', 'deja', '1111');
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -72,15 +52,7 @@ CREATE TABLE IF NOT EXISTS `knjige` (
   `naziv` varchar(30) NOT NULL,
   `pisac` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `knjige`
---
-
-INSERT INTO `knjige` (`id`, `naziv`, `pisac`) VALUES
-(1, 'noz', 'Vuk Draskovic'),
-(2, 'Hajduci', 'Branislav Nusic');
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
