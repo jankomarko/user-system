@@ -1,68 +1,41 @@
 <?php
+require_once ("konektor.php");
+$err="";
+if (!empty($_POST['username'])) {
+    $qusername = "SELECT `korisnicko_ime` FROM `clanovi` WHERE korisnicko_ime= :username";
+    $clanovi= $pdo -> prepare($qusername);
+    $clanovi->execute(array(
+        ':username'=>$_POST['username']
+    ));
+    if($clanovi->rowCount()) {
+        // $err .= "Username postoji u bazi, unesite drugi<br>";
+    }else $err .="Username ne postoji u bazi";
+} else $err .= "- Morate popuniti polje Username<br>";
 
-if($_POST['username']!=="" && $_POST['password']!=="") {
-    $link = mysqli_connect("localhost", "root", "","biblioteka");
-    if($link === false){
-        die("ERROR: Could not connect. " . mysqli_connect_error());
-    }
-    $sql = "SELECT `korisnicko_ime` FROM `clanovi` WHERE korisnicko_ime='".$_POST['username']."' and sifra='".$_POST['password']."'";
-    ($result = mysqli_query($link, $sql));
-    if(mysqli_num_rows($result) > 0){
-        echo "uspesno ste se ulogovali" ;
-    }
-    echo "sdgsdgdgfgd";
-}
-else logovanje.php;
+if (!empty($_POST['password'])) {
+} else $err .= "- Morate popuniti polje Password<br>";
 
+if($err<>""){
+    echo $err;
+} else{
+    $prijava =("SELECT * FROM `clanovi` WHERE korisnicko_ime= :username AND sifra=:si");
+    $pri= $pdo -> prepare($prijava);
+    $pri->execute(array(
+        ':username'=>$_POST['username'],
+        ':si'=>$_POST['password']
+    ));
+    if($pri->rowCount()==1){
+        $qlog=$pri->fetchAll(PDO::FETCH_OBJ);
+        foreach ($qlog as $acount){
+            $NALOG= $acount-> id_clana;
+        }
+$_SESSION['id']= $NALOG;
 
-
-
-
-
-
-
-/*if($_POST['username']!=="" && $_POST['password']!=="") {
-    try {
-        $pdo = new PDO("mysql:host=localhost;dbname=biblioteka", "root", "");
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Connected successfully";
-        $stmt = $pdo->prepare("SELECT korisnicko_ime FROM `clanovi` WHERE korisnicko_ime=':ko' and sifra=':si'");
-
-
-        $stmt->bindParam(':ko', $_POST['username']);
-        $stmt->bindParam(':si', $_POST['password']);
-
-        $stmt->execute();
-      //  $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-       // $result = $stmt->fetchAll();
-        echo "1111";
-      //  foreach ($result as $e){
-       //     echo "$e";
-       //     echo "rrrrrrrrrrrrrrrrrrrrr";
-      //  }
-
-        if(!empty(2>1)) {
-            echo"toooooooooooo";
-            print_r($result);
+     header("Location:index.php");
 
 
-        }else echo "neeeeeeeeeeee";
-
-
-
-
-
-
-
-    } catch (PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
-    }
-
-
-
+    }else echo"Pogresan password";
 
 }
-
-*/
 
 ?>

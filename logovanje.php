@@ -1,28 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Prijava</title>
-</head>
-<body>
-<h1 style="text-align: center"> Prijava<h1>
+<?php
 
-        <form action="proveralogovanja.php" method="post">
-            <h6 align="center"> Korisnicko ime:<h5>
-          <h6 align="center"> <input type="text" name="username" value=""></h6>
-                    <h6 align="center"> Sifra:<h5>
-                <h6 align="center">  <input type="password" name="password" value=""></h6>
-                            <h6 align="center"> <input type="submit" name="action" value="Prijavi se"></h6><br><br>
-        </form>
+          ?>
+          <form action="index.php?opcija=logovanje" method="post">
+              <table>
+                  <tr>
+                      <td>
+                          Username
+                      </td>
+                      <td>
+                          <input type="text" name="username">
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>
+                          Password
+                      </td>
+                      <td>
+                          <input type="password" name="password">
+                      </td>
+                  </tr>
+                  </tr>
+                  <tr>
 
-        <h3 style="text-align: center"> Ako nemate nalog <a href="registracija.php"> registrujte se</a> <h3>
-                <?php
+                      <td colspan="2">
+                          <input type="submit" name="submit" value="Prijavi se">
+                      </td>
+                  </tr>
+
+              </table>
+          </form>
 
 
+          <?php
+//require_once ("konektor.php");
+
+          if (isset($_POST['submit'])) {
+              require_once("konektor.php");
+              require_once("proveralogovanja.php");
+
+          }
+          ?>
+
+          <br>  Ako nemate nalog <a href="registracija.php"> registrujte se</a>
+          <?php
 
 
-
-
-                ?>
-
-</body>
-</html>

@@ -1,84 +1,145 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Registracija</title>
-</head>
-<body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Meni</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+    <?php ?>
+<?php
+require_once ("konektor.php");
+$err="";
+if(isset($_POST['submit'])){
+   if(!empty($_POST['username'])){
+       $qusername = "SELECT `korisnicko_ime` FROM `clanovi` WHERE korisnicko_ime= :username";
+$clanovi= $pdo -> prepare($qusername);
+$clanovi->execute(array(
+        ':username'=>$_POST['username']
+));
+if($clanovi->rowCount()){
+$err.="Username postoji u bazi, unesite drugi<br>";
+}
+   }else $err.= "- Morate popuniti polje Username<br>";
 
-            <li class="nav-item">
-                <a class="nav-link" href="index.php">Pocetna</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="logovanje.php">Prjava</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+    if(!empty($_POST['password'])){
+    }else $err.= "- Morate popuniti polje Password<br>";
 
+    if(!empty($_POST['repassword'])){
+        if($_POST['repassword']==$_POST['password']){
 
+        }else $err .="Vase lozinke se ne podudaraju<br>";
 
-
-
-
-
-<h1 style="text-align: center"> Registracija
-    <h1><br>
-        <form action="" method="post">
-            <h6 align="center"> Ime: <input type="text" name="ime" value="">
-                <h5>
-                    <h6 align="center"> Prezime: <input type="text" name="prezime" value="">
-                        <h5>
-                            <h6 align="center"> Korisnicko ime: <input type="text" name="korisnicko" value="">
-                                <h5>
-                                    <h6 align="center"> Sifra: <input type="password" name="sifra" value="">
-                                        <h5>
-                                            <h6 align="center"> Provera sifre : <input type="password"
-                                                                                       name="proverasifra" value="">
-                                                <h5>
-                                                    <h6 align="center"><input type="submit" name="action"
-                                                                              value="Registruj se"></h6>
-        </form>
-        <h3 style="text-align: center"> Ako imate nalog <a href="logovanje.php"> prijavite se</a><br>
-
-            <?php
-
-            if(isset($_POST['action'])) {
-                $link = mysqli_connect("localhost", "root", "", "biblioteka");
-                if ($link === false) {
-                    die("ERROR: Could not connect. " . mysqli_connect_error());
-
-                }
-
-                if ($_POST['ime'] !== "" && $_POST['prezime'] !== "" && $_POST['korisnicko'] !== "" && $_POST['sifra'] !== "" && $_POST['proverasifra'] !== "") {
-                    $sql = "SELECT `korisnicko_ime` FROM `clanovi` WHERE korisnicko_ime='" . $_POST['korisnicko'] . "'";
-                    ($result = mysqli_query($link, $sql));
-                    if (mysqli_num_rows($result) == 0) {
-                        if ($_POST['proverasifra'] == $_POST['sifra']) {
-
-                            $sql = "INSERT INTO `clanovi`(`ime`, `prezime`, `korisnicko_ime`, `sifra`) VALUES ('" . $_POST['ime'] . "','" . $_POST['prezime'] . "','" . $_POST['korisnicko'] . "','" . $_POST['sifra'] . "')";
-
-                            if (mysqli_query($link, $sql)) {
-                                echo "Uspesno ste se registrovali";
-                            } else {
-                                echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-                            }
-                        }
+    }else $err.= "- Morate popuniti polje Repassword<br>";
+    if(!empty($_POST['name'])){
+    }else $err.= "- Morate popuniti polje Name<br>";
+    if(!empty($_POST['lastname'])){
+    }else $err.= "- Morate popuniti polje Lastname<br>";
 
 
-                    }
+   if($err<>""){
+       echo $err;
+   } else{
+       $dodaj = ("INSERT INTO `clanovi`(`ime`, `prezime`, `korisnicko_ime`, `sifra`)   VALUES (:ime, :pre, :koo, :sif)");
+        $d= $pdo ->prepare($dodaj);
+$d->execute(array(
+    ':koo'=>$_POST['username'],
+    ':ime'=>$_POST['name'],
+    ':pre'=>$_POST['lastname'],
+    ':sif'=>$_POST['password']
+));
 
-                }else  echo "Morate popuniti sva polja";
 
-            }
-            ?>
+       echo "Uspesno ste re registrovali!<br>";
+   }
 
-</body>
-</html>
+}
+
+
+?>
+<form method="POST" action="index.php?opcija=registracija">
+
+   <table>
+<tr>
+    <td>
+        Username
+    </td>
+    <td>
+        <input type="text" name="username">
+    </td>
+</tr>
+       <tr>
+           <td>
+               Password
+           </td>
+           <td>
+               <input type="password" name="password">
+           </td>
+       </tr>
+       </tr>
+       <tr>
+           <td>
+               Repassword
+           </td>
+           <td>
+               <input type="password" name="repassword">
+           </td>
+       </tr>
+       <tr>
+           <td>
+               Name
+           </td>
+           <td>
+               <input type="text" name="name">
+           </td>
+       </tr>
+       <tr>
+           <td>
+               Lastname
+           </td>
+           <td>
+               <input type="text" name="lastname">
+           </td>
+       </tr>
+       <tr>
+
+           <td colspan="2">
+               <input type="submit" name="submit" value="Registruj se">
+           </td>
+       </tr>
+   </table>
+</form>
+<h4> Ako imate nalog <a href="logovanje.php"> prijavite se</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
