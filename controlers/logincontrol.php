@@ -1,5 +1,5 @@
 <?php
-require_once("konektor.php");
+require_once("connector.php");
 $err = "";
 if (!empty($_POST['username'])) {
     $qusername = "SELECT `korisnicko_ime` FROM `clanovi` WHERE korisnicko_ime= :username";

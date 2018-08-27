@@ -49,7 +49,7 @@ if (isset($_SESSION['id'])) {
     }else{
         echo "POCETNA STRANICA";
 include_once('login.php');
-include_once ('registracija.php');
+include_once('register.php');
     }
 
 }

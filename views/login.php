@@ -32,16 +32,16 @@
 
 
 <?php
-//require_once ("konektor.php");
+//require_once ("connector.php");
 
 if (isset($_POST['submit'])) {
-    require_once("konektor.php");
+    require_once("connector.php");
     require_once("logincontrol.php");
 
 }
 ?>
 
-    <br>  Ako nemate nalog <a href="../registracija.php"> registrujte se</a>
+    <br>  Ako nemate nalog <a href="register.php"> registrujte se</a>
 <?php
 
 
