@@ -48,7 +48,7 @@ if (isset($_SESSION['id'])) {
 
     }else{
         echo "POCETNA STRANICA";
-include_once ('logovanje.php');
+include_once('logovanje.php');
 include_once ('registracija.php');
     }
 

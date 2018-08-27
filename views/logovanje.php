@@ -1,7 +1,7 @@
 <?php
 
 ?>
-    <form action="index.php?opcija=logovanje" method="post">
+    <form action="../index.php?opcija=logovanje" method="post">
         <table>
             <tr>
                 <td>
@@ -36,12 +36,12 @@
 
 if (isset($_POST['submit'])) {
     require_once("konektor.php");
-    require_once("proveralogovanja.php");
+    require_once("logincontrol.php");
 
 }
 ?>
 
-    <br>  Ako nemate nalog <a href="registracija.php"> registrujte se</a>
+    <br>  Ako nemate nalog <a href="../registracija.php"> registrujte se</a>
 <?php
 
 
