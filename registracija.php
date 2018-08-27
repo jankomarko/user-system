@@ -101,7 +101,7 @@ if (isset($_POST['submit'])) {
         </tr>
     </table>
 </form>
-<h4> Ako imate nalog <a href="views/logovanje.php"> prijavite se</a>
+<h4> Ako imate nalog <a href="views/login.php"> prijavite se</a>
 
 
 
