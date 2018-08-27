@@ -13,10 +13,10 @@ if($_POST['ime']!==""||$_POST['korisnicko']!==""){
     if($_POST['ime']!==""){
         ($result = mysqli_query($link, $sql));
         if(mysqli_num_rows($result) == 0){
-                ($result = mysqli_query($link, $sql2));
-                if(mysqli_num_rows($result) == 0){
-                    ($result = mysqli_query($link, $sql4));
-                }
+            ($result = mysqli_query($link, $sql2));
+            if(mysqli_num_rows($result) == 0){
+                ($result = mysqli_query($link, $sql4));
+            }
 
         }
 
