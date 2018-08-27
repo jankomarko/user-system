@@ -1,19 +1,18 @@
 <?php
 
 
-
-
 session_start();
 
-if(isset($_SESSION['id'])){
+if (isset($_SESSION['id'])) {
     ?>
     <a href="index.php">POCETNA</a>
     <a href="index.php?opcija=pretraga">PRETRAGA CLANOVA</a>
-    <a href="index.php?opcija=logout">ODJAVA</a><hr>
-    <br>  <h4 > <?php echo $_SESSION['id']; ?>   </h4>
+    <a href="index.php?opcija=logout">ODJAVA</a>
+    <hr>
+    <br>  <h4> <?php echo $_SESSION['id']; ?>   </h4>
 
-<?php
-    if(isset($_GET['opcija'])) {
+    <?php
+    if (isset($_GET['opcija'])) {
         $fajl = $_GET['opcija'] . ".php";
         if (file_exists($fajl)) {
             include_once($fajl);
@@ -23,18 +22,18 @@ if(isset($_SESSION['id'])){
         }
 
 
-    }else{
+    } else {
         echo "POCETNA STRANICA";
 
     }
 
 
-
-}else {
-?>
-<a href="index.php">POCETNA</a>
+} else {
+    ?>
+    <a href="index.php">POCETNA</a>
     <a href="index.php?opcija=registracija">REGISTRACIJA</a>
-    <a href="index.php?opcija=logovanje">PRIJAVA</a><hr>
+    <a href="index.php?opcija=logovanje">PRIJAVA</a>
+    <hr>
 
 <?php
     if(isset($_GET['opcija'])) {

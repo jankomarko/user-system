@@ -1,7 +1,6 @@
-
 <?php
-if(isset($_SESSION['id'])) {
- //   header("Location: index.php?opcija=pretraga");
+if (isset($_SESSION['id'])) {
+    //   header("Location: index.php?opcija=pretraga");
 
 
     ?>
@@ -21,7 +20,7 @@ if(isset($_SESSION['id'])) {
 
 
     <?php
-    if(isset($_POST['action'])) {
+    if (isset($_POST['action'])) {
 
         require_once("clanovi.php");
     }

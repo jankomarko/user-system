@@ -1,36 +1,33 @@
-
 <?php
 
-$link = mysqli_connect("localhost", "root", "","biblioteka");
-$sql = "SELECT * FROM clanovi where CONCAT(ime, ' ', prezime) like '".$_POST['ime']. "%'";
-$sql2= "SELECT * FROM clanovi where prezime like '".$_POST['ime']. "%'";
-$sql3= "SELECT * FROM clanovi";
-$sql4= "SELECT * FROM clanovi where korisnicko_ime like '".$_POST['korisnicko']."%'";
+$link = mysqli_connect("localhost", "root", "", "biblioteka");
+$sql = "SELECT * FROM clanovi where CONCAT(ime, ' ', prezime) like '" . $_POST['ime'] . "%'";
+$sql2 = "SELECT * FROM clanovi where prezime like '" . $_POST['ime'] . "%'";
+$sql3 = "SELECT * FROM clanovi";
+$sql4 = "SELECT * FROM clanovi where korisnicko_ime like '" . $_POST['korisnicko'] . "%'";
 
 
-
-if($_POST['ime']!==""||$_POST['korisnicko']!==""){
-    if($_POST['ime']!==""){
+if ($_POST['ime'] !== "" || $_POST['korisnicko'] !== "") {
+    if ($_POST['ime'] !== "") {
         ($result = mysqli_query($link, $sql));
-        if(mysqli_num_rows($result) == 0){
+        if (mysqli_num_rows($result) == 0) {
             ($result = mysqli_query($link, $sql2));
-            if(mysqli_num_rows($result) == 0){
+            if (mysqli_num_rows($result) == 0) {
                 ($result = mysqli_query($link, $sql4));
             }
 
         }
 
-    }else ($result = mysqli_query($link, $sql4));
+    } else ($result = mysqli_query($link, $sql4));
 
 
-
-}else{
+} else {
     $result = mysqli_query($link, $sql3);
 }
 
 
 //($result = mysqli_query($link, $sql1));
-if(mysqli_num_rows($result) > 0){
+if (mysqli_num_rows($result) > 0) {
     echo "<table>";
     echo "<tr>";
     echo "<th>id</th>";
@@ -38,7 +35,7 @@ if(mysqli_num_rows($result) > 0){
     echo "<th>Prezime</th>";
     echo "<th>Korisnicko ime</th>";
     echo "</tr>";
-    while($row = mysqli_fetch_array($result)){
+    while ($row = mysqli_fetch_array($result)) {
         echo "<tr>";
         echo "<td>" . $row['id_clana'] . "</td>";
         echo "<td>" . $row['ime'] . "</td>";
@@ -49,17 +46,9 @@ if(mysqli_num_rows($result) > 0){
     echo "</table>";
     // Free result set
     mysqli_free_result($result);
-} else{
+} else {
     echo "No records matching your query were found.";
 }
-
-
-
-
-
-
-
-
 
 
 ?>
