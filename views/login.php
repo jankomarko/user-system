@@ -18,7 +18,7 @@
 
     <div align="center" class="form-group row">
         <div class="col-sm-2">
-            <button type="submit" class="btn btn-primary" name="submit"  >Prijavi se</button>
+            <button type="submit" class="btn btn-primary" name="submit"  >Prijavi se</button><br>
         </div>
     </div>
 </form>
@@ -36,7 +36,7 @@ if (isset($_POST['submit'])) {
 }
 ?>
 
-    <br>  Ako nemate nalog <a href="index.php?opcija=views/register"> registrujte se</a>
+   <h4><br>  Ako nemate nalog <a href="index.php?opcija=views/register"> registrujte se</a></h4>
 <?php
 
 

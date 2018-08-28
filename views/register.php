@@ -51,17 +51,15 @@
         </tr>
     </table>
 </form>
-<h4> Ako imate nalog <a href="index.php?opcija=views/login"> prijavite se</a>
-
 <?php
 if(isset($_POST['submit'])){
     require_once ("controlers/registercontrol.php");
 }
 
 
+?>
 
-
-
+    <h4> Ako imate nalog <a href="index.php?opcija=views/login"> prijavite se</a><br>
 
 
 

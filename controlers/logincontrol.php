@@ -17,7 +17,7 @@ if (!empty($_POST['password'])) {
 } else $err .= "- Morate popuniti polje Password<br>";
 
 if ($err <> "") {
-    echo $err;
+    echo  $err;
 } else {
     $prijava = ("SELECT * FROM `clanovi` WHERE korisnicko_ime= :username AND sifra=:password");
     $pri = $pdo->prepare($prijava);
