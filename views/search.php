@@ -15,4 +15,33 @@
 if (isset($_POST['action'])) {
 
     require_once("controlers/users.php");
+
+
+    if (mysqli_num_rows($result) > 0) {
+        echo "<table>";
+        echo "<tr>";
+        echo "<th>id</th>";
+        echo "<th>Ime</th>";
+        echo "<th>Prezime</th>";
+        echo "<th>Korisnicko ime</th>";
+        echo "</tr>";
+        while ($row = mysqli_fetch_array($result)) {
+            echo "<tr>";
+            echo "<td>" . $row['id_clana'] . "</td>";
+            echo "<td>" . $row['ime'] . "</td>";
+            echo "<td>" . $row['prezime'] . "</td>";
+            echo "<td>" . $row['korisnicko_ime'] . "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+        // Free result set
+        mysqli_free_result($result);
+    } else {
+        echo "No records matching your query were found.";
+    }
+
+
+
+
+
 };
