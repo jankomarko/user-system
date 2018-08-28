@@ -1,5 +1,6 @@
 <?php
-require_once("connector.php");
+
+//require_once("connector.php");
 $err = "";
 if (!empty($_POST['username'])) {
     $qusername = "SELECT `korisnicko_ime` FROM `clanovi` WHERE korisnicko_ime= :username";
@@ -22,7 +23,7 @@ if ($err <> "") {
     $pri = $pdo->prepare($prijava);
     $pri->execute(array(
         ':username' => $_POST['username'],
-        ':pasword' => $_POST['password']
+        ':password' => $_POST['password'],
     ));
     if ($pri->rowCount() == 1) {
         $qlog = $pri->fetchAll(PDO::FETCH_OBJ);

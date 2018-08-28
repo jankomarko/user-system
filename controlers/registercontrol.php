@@ -1,6 +1,6 @@
 
 <?php
-require_once("connector.php");
+//require_once("connector.php");
 $err = "";
 if (isset($_POST['submit'])) {
     if (!empty($_POST['username'])) {

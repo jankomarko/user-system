@@ -1,13 +1,14 @@
 <?php
-
+require_once ("views/layaut/header.php");
+require_once ("controlers/connector.php");
 
 session_start();
 
 if (isset($_SESSION['id'])) {
     ?>
     <a href="index.php">POCETNA</a>
-    <a href="index.php?opcija=pretraga">PRETRAGA CLANOVA</a>
-    <a href="index.php?opcija=logout">ODJAVA</a>
+    <a href="index.php?opcija=views/search">PRETRAGA CLANOVA</a>
+    <a href="index.php?opcija=controlers/logout">ODJAVA</a>
     <hr>
     <br>  <h4> <?php echo $_SESSION['id']; ?>   </h4>
 
@@ -31,8 +32,8 @@ if (isset($_SESSION['id'])) {
 } else {
     ?>
     <a href="index.php">POCETNA</a>
-    <a href="index.php?opcija=registracija">REGISTRACIJA</a>
-    <a href="index.php?opcija=logovanje">PRIJAVA</a>
+    <a href="index.php?opcija=views/register">REGISTRACIJA</a>
+    <a href="index.php?opcija=views/login">PRIJAVA</a>
     <hr>
 
 <?php
@@ -48,11 +49,11 @@ if (isset($_SESSION['id'])) {
 
     }else{
         echo "POCETNA STRANICA";
-include_once('login.php');
-include_once('register.php');
+include_once('views/login.php');
+include_once('views/register.php');
     }
 
 }
             
             
-            
+   require_once ("views/layaut/foother.php");

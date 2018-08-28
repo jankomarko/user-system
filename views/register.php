@@ -1,5 +1,5 @@
 
-<form method="POST" action="../index.php?opcija=registracija">
+<form method="POST" action="index.php?opcija=views/register">
 
     <table>
         <tr>
@@ -51,11 +51,11 @@
         </tr>
     </table>
 </form>
-<h4> Ako imate nalog <a href="login.php"> prijavite se</a>
+<h4> Ako imate nalog <a href="index.php?opcija=views/login"> prijavite se</a>
 
 <?php
 if(isset($_POST['submit'])){
-    require_once ("registercontrol.php");
+    require_once ("controlers/registercontrol.php");
 }
 
 

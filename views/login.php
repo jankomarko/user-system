@@ -1,47 +1,42 @@
 <?php
 
 ?>
-    <form action="../index.php?opcija=logovanje" method="post">
-        <table>
-            <tr>
-                <td>
-                    Username
-                </td>
-                <td>
-                    <input type="text" name="username">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Password
-                </td>
-                <td>
-                    <input type="password" name="password">
-                </td>
-            </tr>
-            </tr>
-            <tr>
+    <form action="index.php?opcija=views/login" method="post">
+    <div align="center" class="form-group row">
+        <label  for="inputUsername" class="col-sm-2 col-form-label">Username:</label>
+        <div   class="col-sm-2">
+            <input type="text" class="form-control" id="inputUsername" name="username">
+        </div>
+    </div>
+    <div align="center" class="form-group row">
+        <label align="center" for="inputPassword3" class="col-sm-2 col-form-label">Password:</label>
+        <div class="col-sm-2">
+            <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Password">
+        </div>
+    </div>
 
-                <td colspan="2">
-                    <input type="submit" name="submit" value="Prijavi se">
-                </td>
-            </tr>
 
-        </table>
-    </form>
+    <div align="center" class="form-group row">
+        <div class="col-sm-2">
+            <button type="submit" class="btn btn-primary" name="submit"  >Prijavi se</button>
+        </div>
+    </div>
+</form>
+
+
 
 
 <?php
-//require_once ("connector.php");
 
 if (isset($_POST['submit'])) {
-    require_once("connector.php");
-    require_once("logincontrol.php");
+
+   // require_once("controlers/connector.php");
+   require_once("controlers/logincontrol.php");
 
 }
 ?>
 
-    <br>  Ako nemate nalog <a href="register.php"> registrujte se</a>
+    <br>  Ako nemate nalog <a href="index.php?opcija=views/register"> registrujte se</a>
 <?php
 
 
