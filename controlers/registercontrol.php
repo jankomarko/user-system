@@ -29,9 +29,7 @@ if (isset($_POST['submit'])) {
     } else $err .= "- Morate popuniti polje Lastname<br>";
 
 
-    if ($err <> "") {
-        echo $err;
-    } else {
+    if ($err == "") {
         $dodaj = ("INSERT INTO `clanovi`(`ime`, `prezime`, `korisnicko_ime`, `sifra`)   VALUES (:ime, :pre, :koo, :sif)");
         $d = $pdo->prepare($dodaj);
         $d->execute(array(
@@ -43,9 +41,11 @@ if (isset($_POST['submit'])) {
 
 
         echo "Uspesno ste re registrovali!<br>";
+    } else {
+
+        require_once ('views/errorpage.php');
+
     }
-
 }
-
 
 ?>

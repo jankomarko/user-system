@@ -59,7 +59,7 @@ if(isset($_POST['submit'])){
 
 ?>
 
-    <h4> Ako imate nalog <a href="index.php?opcija=views/login"> prijavite se</a><br>
+  <br>  <h6> Ako imate nalog <a href="index.php?opcija=views/login"> prijavite se</a><br>
 
 
 

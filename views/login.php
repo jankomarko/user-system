@@ -29,9 +29,16 @@
 <?php
 
 if (isset($_POST['submit'])) {
+  //  login($_POST['username'],$_POST['password']);
+//logi->login($_POST['username'],$_POST['password']);
+
+//login("janko","2222");
+//controlers/logincontrol.php/login("janko","2222");
+
+
 
    // require_once("controlers/connector.php");
-   require_once("controlers/logincontrol.php");
+//   require_once("controlers/logincontrol.php/");
 
 }
 ?>
