@@ -6,7 +6,7 @@ Short description....
                 
 1. git clone https://github.com/jankomarko/user-system.git
 2. create database
-3. import database tables from file database/db-create-tables.sql
+3. import database tables from file database/127_0_0_1 (2).sql
 4. insert config data to config/database.php
                 
 
