@@ -14,10 +14,11 @@
 <?php
 if (isset($_POST['action'])) {
 
-    require_once("controlers/users.php");
+    require ("controllers/users.php");
+$result=searchUsers($_POST['name'],$_POST['username']);
 
 
-    if (mysqli_num_rows($result) > 0) {
+    if (!empty($result)) {
         echo "<table>";
         echo "<tr>";
         echo "<th>id</th>";
@@ -31,6 +32,7 @@ if (isset($_POST['action'])) {
             echo "<td>" . $row['ime'] . "</td>";
             echo "<td>" . $row['prezime'] . "</td>";
             echo "<td>" . $row['korisnicko_ime'] . "</td>";
+            echo "<td>" . $row['user_type'] . "</td>";
             echo "</tr>";
         }
         echo "</table>";

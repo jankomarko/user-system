@@ -1,5 +1,5 @@
 
-<form method="POST" action="index.php?opcija=views/register">
+<form method="POST" action="index.php?opcija=register">
 
     <table>
         <tr>
@@ -53,13 +53,17 @@
 </form>
 <?php
 if(isset($_POST['submit'])){
-    require_once ("controlers/registercontrol.php");
+    echo"eeeeeeeeeeeee";
+    require ('controllers/register.php');
+    register($_POST['name'],$_POST['lastname'],$_POST['username'],$_POST['password'],$_POST['repassword'],$pdo);
+  //  require_once ("controllers/register.php");
+
 }
 
 
 ?>
 
-  <br>  <h6> Ako imate nalog <a href="index.php?opcija=views/login"> prijavite se</a><br>
+  <br>  <h6> Ako imate nalog <a href="index.php?opcija=login"> prijavite se</a><br>
 
 
 

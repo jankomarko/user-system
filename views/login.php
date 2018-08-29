@@ -1,7 +1,7 @@
 <?php
 
 ?>
-    <form action="index.php?opcija=views/login" method="post">
+    <form action="index.php?opcija=login" method="post">
     <div align="center" class="form-group row">
         <label  for="inputUsername" class="col-sm-2 col-form-label">Username:</label>
         <div   class="col-sm-2">
@@ -29,21 +29,11 @@
 <?php
 
 if (isset($_POST['submit'])) {
-  //  login($_POST['username'],$_POST['password']);
-//logi->login($_POST['username'],$_POST['password']);
-
-//login("janko","2222");
-//controlers/logincontrol.php/login("janko","2222");
-
-
-
-   // require_once("controlers/connector.php");
-//   require_once("controlers/logincontrol.php/");
+    //require ('controllers/connector.php');
+    require ('controllers/login.php');
+    login($_POST['username'], $_POST['password']);
 
 }
 ?>
 
-   <h4><br>  Ako nemate nalog <a href="index.php?opcija=views/register"> registrujte se</a></h4>
-<?php
-
-
+   <h4><br>  Ako nemate nalog <a href="index.php?opcija=register"> registrujte se</a></h4>

@@ -1,21 +1,32 @@
 <?php
-require_once ("views/layaut/header.php");
-require_once ("controlers/connector.php");
+
+require_once("config/database.php");
+
+require_once("views/layaut/header.php");
+require ("views/meni.php");
+require("controllers/connector.php");
+conection();
 
 session_start();
 
 if (isset($_SESSION['id'])) {
-    ?>
-    <a href="index.php">POCETNA</a>
-    <a href="index.php?opcija=views/search">PRETRAGA CLANOVA</a>
-    <a href="index.php?opcija=controlers/logout">ODJAVA</a>
-    <hr>
-    <br>  <h4> <?php echo $_SESSION['id']; ?>   </h4>
+    menilogin();
+     echo $_SESSION['id'];
+  echo "<br>";
 
-    <?php
     if (isset($_GET['opcija'])) {
-        $fajl = $_GET['opcija'] . ".php";
+        $fajl = $_GET['opcija'] . ".php"; //var_dump($_POST); die();
+        if (empty($_POST)) {
+
+           $fajl = 'views/' . $fajl;
+
+        } else {
+
+
+            $fajl = 'controllers/' . $fajl;
+        }
         if (file_exists($fajl)) {
+
             include_once($fajl);
         } else {
 
@@ -30,16 +41,19 @@ if (isset($_SESSION['id'])) {
 
 
 } else {
-    ?>
-    <a href="index.php">POCETNA</a>
-    <a href="index.php?opcija=views/register">REGISTRACIJA</a>
-    <a href="index.php?opcija=views/login">PRIJAVA</a>
-    <hr>
+    menilogout();
 
-<?php
-    if(isset($_GET['opcija'])) {
+    if (isset($_GET['opcija'])) {
         $fajl = $_GET['opcija'] . ".php";
+        if (empty($_POST)) {
+            $fajl = 'views/' . $fajl;
+        } else {
+            echo "eeeeee";
+            $fajl = 'controllers/' . $fajl;
+            echo $fajl;
+        }
         if (file_exists($fajl)) {
+
             include_once($fajl);
         } else {
 
@@ -47,13 +61,13 @@ if (isset($_SESSION['id'])) {
         }
 
 
-    }else{
+    } else {
         echo "POCETNA STRANICA";
-include_once('views/login.php');
-include_once('views/register.php');
+        include_once('views/login.php');
+        include_once('views/register.php');
     }
 
 }
-            
-            
-   require_once ("views/layaut/foother.php");
+
+
+require_once("views/layaut/foother.php");

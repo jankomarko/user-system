@@ -1,4 +1,5 @@
 <?php
 
-echo "GRESKA";
+echo $_SESSION['error_mesage'];
+$_SESSION['error_mesage']="";
 ?>
