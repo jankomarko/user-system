@@ -3,22 +3,23 @@
 require_once("config/database.php");
 
 require_once("views/layaut/header.php");
-require ("views/meni.php");
+require("views/meni.php");
 require("controllers/connector.php");
 conection();
 
 session_start();
 
+
 if (isset($_SESSION['id'])) {
     menilogin();
-     echo $_SESSION['id'];
-  echo "<br>";
+    echo $_SESSION['adm'];
+    echo "<br>";
 
     if (isset($_GET['opcija'])) {
         $fajl = $_GET['opcija'] . ".php"; //var_dump($_POST); die();
         if (empty($_POST)) {
 
-           $fajl = 'views/' . $fajl;
+            $fajl = 'views/' . $fajl;
 
         } else {
 
@@ -48,9 +49,7 @@ if (isset($_SESSION['id'])) {
         if (empty($_POST)) {
             $fajl = 'views/' . $fajl;
         } else {
-            echo "eeeeee";
             $fajl = 'controllers/' . $fajl;
-            echo $fajl;
         }
         if (file_exists($fajl)) {
 

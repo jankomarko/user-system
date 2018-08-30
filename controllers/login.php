@@ -17,16 +17,22 @@ function login($username, $password){
             $qlog = $pri->fetchAll(PDO::FETCH_OBJ);
             foreach ($qlog as $acount) {
                 $nalog = $acount->id_clana;
+                $adm= $acount->user_type;
+                $access= $acount->access;
             }
-            $_SESSION['id'] = $nalog;
-            header("Location:index.php");
 
+            if($access=="unlock") {
+                $_SESSION['id'] = $nalog;
+                $_SESSION['adm'] = $adm;
+                header("Location:index.php");
 
+            }else $_SESSION['error_mesage'].="Pristup odbijen";
         } else $_SESSION['error_mesage'] .= "Pogresni podaci";
 
 
     } else $_SESSION['error_mesage'].= "Morate popuniti sva polja";
 if($_SESSION['error_mesage']!==""){
+  //  header("Location:index.php?views/login");
     require_once('views/errorpage.php');
 }
 

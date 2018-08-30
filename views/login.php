@@ -36,4 +36,5 @@ if (isset($_POST['submit'])) {
 }
 ?>
 
-   <h4><br>  Ako nemate nalog <a href="index.php?opcija=register"> registrujte se</a></h4>
+   <h6><br>  Ako nemate nalog <a href="index.php?opcija=register"> registrujte se</a></h6>
+<hr>

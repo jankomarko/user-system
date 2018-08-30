@@ -1,6 +1,6 @@
 <h1 style="text-align: center"> Pretraga clanova
     <h1>
-        <form action="index.php?opcija=views/search" method="post">
+        <form action="index.php?opcija=search" method="post">
             <h6 align="center"> Ime i prezime:
                 <h5>
                     <h6 align="center"><input type="text" name="name" value=""></h6>
@@ -13,37 +13,30 @@
 
 <?php
 if (isset($_POST['action'])) {
-
-    require ("controllers/users.php");
-$result=searchUsers($_POST['name'],$_POST['username']);
-
-
     if (!empty($result)) {
-        echo "<table>";
+        echo "<table class='table table-striped'>";
         echo "<tr>";
         echo "<th>id</th>";
         echo "<th>Ime</th>";
         echo "<th>Prezime</th>";
         echo "<th>Korisnicko ime</th>";
+        echo "<th>Users_type</th>";
         echo "</tr>";
-        while ($row = mysqli_fetch_array($result)) {
+
+        foreach ($result as $acount) {
+            $acount->id_clana;
+
             echo "<tr>";
-            echo "<td>" . $row['id_clana'] . "</td>";
-            echo "<td>" . $row['ime'] . "</td>";
-            echo "<td>" . $row['prezime'] . "</td>";
-            echo "<td>" . $row['korisnicko_ime'] . "</td>";
-            echo "<td>" . $row['user_type'] . "</td>";
+            echo "<td>" . $acount->id_clana . "</td>";
+            echo "<td>" . $acount->ime . "</td>";
+            echo "<td>" . $acount->prezime . "</td>";
+            echo "<td>" . $acount->korisnicko_ime . "</td>";
+            echo "<td>" . $acount->user_type . "</td>";
             echo "</tr>";
         }
         echo "</table>";
-        // Free result set
-        mysqli_free_result($result);
+
     } else {
         echo "No records matching your query were found.";
     }
-
-
-
-
-
 };
